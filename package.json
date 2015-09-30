@@ -1,0 +1,32 @@
+{
+  "name": "chainStyle",
+  "version": "0.0.1",
+  "description": "Easy to make strong chain style interface",
+  "main": "index.js",
+  "dependencies": {
+    "logicer": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "babel": "*",
+    "chokidar": "*"
+  },
+  "scripts": {
+    "test": "mocha --compilers js:babel/register test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LoveKino/chainStyle.git"
+  },
+  "keywords": [
+    "chain",
+    "interface",
+    "style"
+  ],
+  "author": "ddchen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LoveKino/chainStyle/issues"
+  },
+  "homepage": "https://github.com/LoveKino/chainStyle#readme"
+}
