@@ -29,7 +29,8 @@
  *     typeMap
  */
 
-import TypeChecker from "./typeChecker";
+import TypeChecker from "typevalidator";
+import QueueInfo from "./QueueInfo";
 
 var chainStyle = (chainMap = {}, otherMap = {}, opts = {}) => {
     let InnerClz = function() {
@@ -69,7 +70,7 @@ var loadOtherMap = (InnerClz, otherMap, typeChecker) => {
 var defineEnd = (InnerClz, chainMap, opts, typeChecker) => {
     InnerClz.prototype.end = function(cb) {
         if (this.__callingEnd__ === true) {
-            return cb && cb.call(this, new QueneInfo(this.__callingQueue__));
+            return cb && cb.call(this, new QueueInfo(this.__callingQueue__));
         }
         callQuene(this.__callingQueue__, chainMap, this, typeChecker);
         let chainRegular = opts.chainRegular;
@@ -83,7 +84,7 @@ var defineEnd = (InnerClz, chainMap, opts, typeChecker) => {
             }
         }
         this.__callingEnd__ == true;
-        return cb && cb.call(this, new QueneInfo(this.__callingQueue__));
+        return cb && cb.call(this, new QueueInfo(this.__callingQueue__));
     }
 }
 
@@ -145,32 +146,6 @@ var chainMethod = (clz, name, method) => {
             args: y
         });
         return this;
-    }
-}
-
-var QueneInfo = function(queue) {
-    this.queue = queue;
-}
-QueneInfo.prototype = {
-    constructor: QueneInfo,
-    getMap: function() {
-        let map = {};
-        for (let i = 0; i < this.queue.length; i++) {
-            let item = this.queue[i];
-            let name = item.name;
-            map[name] = item;
-        }
-        return map;
-    },
-    getArrMap: function() {
-        let map = {};
-        for (let i = 0; i < this.queue.length; i++) {
-            let item = this.queue[i];
-            let name = item.name;
-            if (!map[name]) map[name] = [];
-            map[name].push(item);
-        }
-        return map;
     }
 }
 
