@@ -1,10 +1,10 @@
 {
-  "name": "chainStyle",
-  "version": "0.0.1",
+  "name": "chainstyle",
+  "version": "0.0.2",
   "description": "Easy to make strong chain style interface",
   "main": "index.js",
   "dependencies": {
-    "logicer": "*"
+    "typevalidator": "*"
   },
   "devDependencies": {
     "mocha": "*",

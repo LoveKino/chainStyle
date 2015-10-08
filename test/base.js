@@ -3,7 +3,29 @@ import assert from "assert";
 
 
 describe("chainStyle", () => {
-    it("base", () => {
+    it("base0", () => {
+        let clz = chainStyle({
+            a: null,
+            b: null
+        });
+
+        let inst = new clz();
+        inst.a("123").b("456");
+
+        inst.end();
+    });
+    it("base1", () => {
+        let clz = chainStyle({
+            a: function(){},
+            b: function(){}
+        });
+
+        let inst = new clz();
+        inst.a("123").b("456");
+
+        inst.end();
+    });
+    it("base2", () => {
         let clz = chainStyle({
             a: {
                 checkType: ["string"]
